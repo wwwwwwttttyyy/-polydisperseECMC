@@ -6,7 +6,34 @@ Features
   Pressure calculation: Virial pressure estimation with equilibration control
   Flexible I/O: Both text and binary configuration formats
   Modern C++: Header-only observers, structured bindings, clean architecture
-  
+
+
+Quick Start
+
+#include "system.h"
+#include "ecmc.h"
+
+System sys;
+generateSquareLattice(sys, 16, 16, 0.7);  // 256 particles, φ=0.7
+
+AlgorithmPara algo;
+algo.set_n_steps(100000);
+algo.set_chain_length(1.0);
+algo.set_n_equilibration_pressure(10000);  // Skip first 10k chains
+
+EcmcEngine engine(sys, algo, phys);
+engine.run();
+
+
+Build
+Requires C++17 compiler:
+
+
+cd tests/build
+cmake -G Ninja ..
+ninja
+./test_ecmc
+
 References
 This implementation is based on the Event-Chain Monte Carlo algorithm for hard-sphere systems: 
 
