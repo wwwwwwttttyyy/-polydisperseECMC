@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-// ========== 构造函数 ==========
+
 System::System(size_t n, const std::array<double, 2>& box_) : boxsize(box_) {
     reserve(n);
 }
@@ -37,12 +37,10 @@ void System::addParticle(double x_, double y_, double r_, int tid) {
     y.push_back(y_);
     radius.push_back(r_);
     typeID.push_back(tid);
-    
-    // 动态更新半径统计
+
     if (r_ > radiusMax) radiusMax = r_;
     if (r_ < radiusMin) radiusMin = r_;
-    
-    // 更新平均值（增量式更新避免重新遍历）
+
     size_t n = radius.size();
     radiusMean = ((n - 1) * radiusMean + r_) / n;
 }
@@ -67,7 +65,7 @@ void System::updateMaxMeanRadius() {
         return;
     }
     
-    // 重新计算所有半径统计（用于批量加载后）
+
     radiusMax = *std::max_element(radius.begin(), radius.end());
     radiusMin = *std::min_element(radius.begin(), radius.end());
     
@@ -240,3 +238,4 @@ void System::loadConfigBinary(const std::string& filename) {
     std::cout << "Loaded " << size() << " particles from binary file " << filename 
               << " (PBC applied, box centered at origin)\n";
 }
+
