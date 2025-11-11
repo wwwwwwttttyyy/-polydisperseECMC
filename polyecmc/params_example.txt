@@ -11,6 +11,8 @@ binary_output = false
 
 # ECMC parameters
 n_chains = 1000000
+# Recommendation: 0.24 × box size (e.g., for L≈33.9, use 8.0). 
+# Chains that are too short show insignificant acceleration effects compared to MMC, while chains that are too long exhibit reduced acceleration effects.
 chain_length = 1.0
 
 # Sampling intervals
@@ -22,3 +24,4 @@ n_equilibration_pressure = 100000    # First 100,000 chains used for equilibrati
 
 # Random number seed (0=random)
 rng_seed = 42
+
