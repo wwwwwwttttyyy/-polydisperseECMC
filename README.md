@@ -1,6 +1,7 @@
 # polydisperseECMC
 
 A high-performance C++17 implementation of the Event-Chain Monte Carlo (ECMC) algorithm for simulating hard disk systems in 2D.
+This documentation and the comments in the code were generated with assistance from DeepSeek V3.2.
 
 ## Features
 
